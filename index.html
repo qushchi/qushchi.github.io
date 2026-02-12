@@ -294,6 +294,74 @@ footer{
   color:var(--muted);
   font-size:13px;
 }
+  /* CONTACT */
+.contact-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+@media(max-width:900px){
+  .contact-box{grid-template-columns:1fr}
+}
+
+.contact-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:20px;
+}
+
+.social-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:10px;
+}
+
+.social-link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  transition:.2s;
+}
+
+.social-link:hover{
+  transform:translateY(-2px);
+  border-color:#ffffff44;
+}
+
+.social-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.icon{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.icon svg{
+  width:18px;
+  height:18px;
+  fill:#fff;
+}
+
+.social-text b{display:block;font-size:14px}
+.social-text span{display:block;font-size:12px;color:var(--muted)}
+
 </style>
 </head>
 
@@ -360,8 +428,9 @@ Qo'shilish
       </div>
 
       <p class="muted" style="margin-top:15px">
-        📍Universitet ichi, Litsey binosi • 414-xona <br>
+        📍 Universitet ichi, Litsey binosi • 414-xona <br>
         🕒 Mashg‘ulotlar haftalik reja bo‘yicha
+        🏆 Bizga qo'shilish uchun o'ng taraf yuqori burchakdagi "Qo'shilish" tugmasidan foydalaning!🚀
       </p>
     </div>
 
@@ -445,6 +514,67 @@ Qo'shilish
         <span>Ko‘proq →</span>
       </a>
     </div>
+  </div>
+</section>
+<section class="section" id="aloqa">
+  <div class="container">
+    <h2>Aloqa</h2>
+
+    <div class="contact-box">
+      <div class="contact-card">
+        <h3>Biz bilan bog‘lanish</h3>
+
+        <div class="social-list">
+
+          <!-- TELEGRAM -->
+          <a class="social-link" href="https://t.me/qushchi_team" target="_blank">
+            <div class="social-left">
+              <div class="icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M9.04 15.62 8.9 19.5c.57 0 .82-.25 1.12-.55l2.69-2.57 5.57 4.08c1.02.56 1.74.27 2-.95L23.9 4.9c.33-1.5-.54-2.2-1.53-1.84L1.6 10.84c-1.47.58-1.45 1.42-.25 1.79l5.31 1.66L19 6.62c.62-.38 1.19-.17.72.25L9.04 15.62z"/>
+                </svg>
+              </div>
+              <div>
+                <b>Telegram</b><br>
+                <span style="font-size:12px;color:var(--muted)">
+                  @qushchi_team
+                </span>
+              </div>
+            </div>
+          </a>
+
+          <!-- INSTAGRAM -->
+          <a class="social-link"
+             href="https://www.instagram.com/qushchi_team?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+             target="_blank">
+            <div class="social-left">
+              <div class="icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5z"/>
+                </svg>
+              </div>
+              <div>
+                <b>Instagram</b><br>
+                <span style="font-size:12px;color:var(--muted)">
+                  @qushchi_team
+                </span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- ФОРМА -->
+        <a class="btn"
+           href="https://forms.gle/7jzmjKmnj52dsXxx7"
+           target="_blank"
+           style="display:inline-block;margin-top:20px;">
+          Ariza topshirish
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
