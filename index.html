@@ -9,14 +9,14 @@
   <style>
     :root{
       /* Oq + to‘q ko‘k brand */
-      --bg:#070B12;          /* fon */
-      --card:#0B1220;        /* kartalar */
-      --line:#16233A;        /* border */
+      --bg:#070B12;
+      --card:#0B1220;
+      --line:#16233A;
       --text:#ffffff;
       --muted:rgba(255,255,255,.78);
 
-      --accent:#0D2B5B;      /* asosiy ko‘k */
-      --accent2:#123B7A;     /* hover ko‘k */
+      --accent:#0D2B5B;
+      --accent2:#123B7A;
       --soft:rgba(13,43,91,.18);
 
       --radius:22px;
@@ -52,15 +52,14 @@
       font-weight:800;
       letter-spacing:1px;
     }
-
-    /* Logo oq fonli bo‘lgani uchun statusli “badge” qilamiz */
+    /* Logo oq fonli bo‘lgani uchun “badge” qilib qo‘yamiz */
     .brand-logo{
-      width:48px;
-      height:48px;
-      object-fit:contain;
+      width:56px;
+      height:56px;
+      object-fit:cover;      /* ichidagi qush kattaroq ko‘rinadi */
       background:#ffffff;
-      padding:7px;
-      border-radius:14px;
+      padding:6px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,.35);
       box-shadow: 0 10px 26px rgba(0,0,0,.35);
     }
@@ -121,7 +120,6 @@
       .hero-grid{grid-template-columns:1fr}
       .menu{display:none}
     }
-
     .hero-badge{
       display:inline-flex; gap:10px; align-items:center;
       border:1px solid rgba(255,255,255,.10);
@@ -133,17 +131,19 @@
       width:fit-content;
     }
 
-    /* Hero’da logo katta bo‘lsin (status) */
+    /* Hero’da logo kattaroq (oq fonli bo‘lsa ham statusli) */
     .hero-logo{
-      width:128px;
-      height:128px;
-      object-fit:contain;
-      background:#fff;
-      padding:14px;
-      border-radius:26px;
-      border:1px solid rgba(255,255,255,.30);
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
-      margin-top:14px;
+      width:180px;
+      height:180px;
+      object-fit:cover;      /* ichidagi qush kattaroq ko‘rinadi */
+      background:#ffffff;
+      padding:8px;
+      border-radius:32px;
+      border:1px solid rgba(255,255,255,.4);
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.6),
+        0 0 40px rgba(13,43,91,.35);
+      margin-top:20px;
     }
 
     .hero-title{
@@ -336,8 +336,8 @@
           <a href="#aloqa">Aloqa</a>
         </nav>
 
-        <!-- Telegram linkni o'zingiznikiga almashtiring -->
         <div class="nav-actions">
+          <!-- Telegram linkni o'zingiznikiga almashtiring -->
           <a class="btn btn-solid" href="https://t.me/qushchi_team">Qo‘shilish</a>
         </div>
       </div>
@@ -353,7 +353,6 @@
             Talabalar muhandislik jamoasi • Aviatsiya & Dronlar
           </div>
 
-          <!-- Katta logo (oq fonli bo'lsa ham chiroyli ko'rinadi) -->
           <img class="hero-logo" src="assets/assetslogo.jpg.JPG" alt="Qushchi logo katta" />
 
           <h1 class="hero-title">Qushchi<br/>Muhandislik Klubi</h1>
@@ -440,7 +439,6 @@
       </div>
     </section>
 
-    <!-- GALEREYA (keyin rasmlar qo‘shamiz) -->
     <section id="galereya" class="gallery-wrap">
       <div class="container">
         <div class="section-title">
