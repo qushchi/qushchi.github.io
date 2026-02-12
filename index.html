@@ -1,327 +1,512 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qushchi — Muhandislik Klubi</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qushchi — Muhandislik Klubi</title>
+  <meta name="description" content="Qushchi — aviatsiya, dronlar va muhandislik yo‘nalishida talabalardan iborat klub." />
 
-<style>
-:root{
-  --bg:#070B12;
-  --card:#0B1220;
-  --line:#16233A;
-  --text:#ffffff;
-  --muted:rgba(255,255,255,.78);
-  --accent:#0D2B5B;
-  --accent2:#123B7A;
-}
+  <style>
+    :root{
+      --bg:#070B12;
+      --card:#0B1220;
+      --line:#16233A;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
 
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Segoe UI,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-a{text-decoration:none;color:inherit}
-.container{max-width:1100px;margin:auto;padding:0 20px}
+      --accent:#0D2B5B;
+      --accent2:#123B7A;
+      --soft:rgba(13,43,91,.18);
 
-/* NAVBAR */
-.nav{
-  position:sticky;
-  top:0;
-  background:rgba(7,11,18,.85);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--line);
-  z-index:100;
-}
-.nav-inner{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 0;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-.brand-logo{
-  width:50px;
-  height:auto;
-  object-fit:contain;
-}
-.menu{
-  display:flex;
-  gap:20px;
-  color:var(--muted);
-  font-size:14px;
-}
-.menu a:hover{color:#fff}
+      --radius:22px;
+      --shadow2: 0 12px 34px rgba(0,0,0,.32);
+    }
 
-.btn{
-  padding:12px 18px;
-  background:var(--accent);
-  border-radius:14px;
-  font-weight:600;
-  transition:.2s;
-}
-.btn:hover{background:var(--accent2)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 18px}
 
-/* HERO */
-.hero{
-  padding:80px 0 60px;
-  background:
-  radial-gradient(900px 400px at 50% 0%, rgba(13,43,91,.35), transparent 70%);
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:30px;
-  align-items:center;
-}
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .menu{display:none}
-}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:100;
+      background: rgba(7,11,18,.72);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
 
-.hero-logo{
-  width:220px;
-  height:auto;
-  object-fit:contain;
-  background:transparent;
-  box-shadow:0 30px 80px rgba(13,43,91,.45);
-  margin-bottom:20px;
-}
+    /* LOGO FRAME (oq fonli logoni chiroyli ko‘rsatish) */
+    .logo-frame{
+      background:#fff;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.35);
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      overflow:hidden;               /* zoom qilinganda chetlar kesiladi */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 auto;
+    }
+    .logo-frame--nav{
+      width:54px;
+      height:54px;
+      padding:6px;
+    }
+    .logo-frame--hero{
+      width:190px;
+      height:190px;
+      padding:10px;
+      border-radius:32px;
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.6),
+        0 0 40px rgba(13,43,91,.35);
+      border:1px solid rgba(255,255,255,.40);
+    }
+    .logo-img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      transform-origin:center;
+      transform: scale(1.35);        /* OQ CHETLARNI KESISH UCHUN ZOOM */
+    }
+    .logo-img--nav{ transform: scale(1.55); }   /* navbar’da biroz ko‘proq zoom */
+    .logo-img--hero{ transform: scale(1.35); }
 
-.hero h1{
-  font-size:56px;
-  margin:0;
-  line-height:1.1;
-}
-.hero p{
-  margin-top:18px;
-  color:var(--muted);
-  max-width:550px;
-}
+    .menu{
+      display:flex; gap:18px;
+      font-size:14px;
+      color:var(--muted);
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .menu a{opacity:.9}
+    .menu a:hover{opacity:1;color:#fff}
 
-.hero-buttons{
-  margin-top:25px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
+    .nav-actions{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(13,43,91,.45);
+      background: var(--soft);
+      color:#fff;
+      cursor:pointer;
+      transition: .2s ease;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); background: rgba(18,59,122,.22)}
+    .btn-solid{
+      background: var(--accent);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .btn-solid:hover{background: var(--accent2)}
+    .btn-ghost{
+      background: transparent;
+      border:1px solid var(--line);
+      color: var(--muted);
+      font-weight:600;
+    }
+    .btn-ghost:hover{background: rgba(255,255,255,.04); color:#fff}
 
-.pill-row{
-  margin-top:20px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.pill{
-  border:1px solid var(--line);
-  padding:8px 12px;
-  border-radius:999px;
-  font-size:13px;
-  color:var(--muted);
-  background:rgba(255,255,255,.03);
-}
+    /* HERO */
+    header.hero{
+      padding:78px 0 54px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(900px 420px at 50% 8%, rgba(13,43,91,.30), transparent 60%),
+        radial-gradient(700px 340px at 18% 30%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(700px 340px at 82% 36%, rgba(18,59,122,.18), transparent 60%);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:center;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+    .hero-badge{
+      display:inline-flex; gap:10px; align-items:center;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      width:fit-content;
+    }
+    .hero-title{
+      margin:14px 0 0 0;
+      font-size:56px;
+      line-height:1.05;
+      letter-spacing:1px;
+    }
+    .hero-sub{
+      margin-top:14px;
+      color: var(--muted);
+      max-width:62ch;
+      font-size:16px;
+    }
+    .hero-actions{
+      margin-top:20px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pill-row{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+    }
 
-/* CARD RIGHT */
-.hero-card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:20px;
-}
-.hero-card h3{margin-top:0}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-top:15px;
-}
-.stat{
-  background:rgba(255,255,255,.03);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:12px;
-  text-align:center;
-}
-.stat b{display:block;font-size:18px}
-.stat span{font-size:12px;color:var(--muted)}
+    .hero-card{
+      background: rgba(11,18,32,.72);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+    .hero-card h3{margin:0 0 10px 0}
+    .muted{color:var(--muted)}
+    .stats{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .stat{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:12px;
+      text-align:center;
+    }
+    .stat b{display:block;font-size:18px}
+    .stat span{font-size:12px;color:var(--muted)}
+    .kbd{
+      display:inline-block;
+      padding:4px 8px;border-radius:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:12px;color:var(--muted)
+    }
 
-.section{
-  padding:60px 0;
-}
-.section h2{
-  font-size:28px;
-  margin-bottom:20px;
-}
+    /* SECTIONS */
+    section{padding:58px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin-bottom:18px;
+    }
+    .section-title h2{margin:0;font-size:28px}
+    .section-title p{margin:0;color:var(--muted);font-size:14px}
 
-/* BO‘LIMLAR */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr}
-}
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:20px;
-  transition:.2s;
-}
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#ffffff33;
-}
-.card h3{margin-top:0}
-.card p{color:var(--muted);font-size:14px}
+    /* CARDS */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      transition:.22s ease;
+    }
+    .card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.16);
+      box-shadow: var(--shadow2);
+    }
+    .card h3{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:14px}
 
-/* GALEREYA */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:15px;
-}
-@media(max-width:900px){
-  .gallery{grid-template-columns:1fr 1fr}
-}
-.gallery div{
-  height:170px;
-  border-radius:18px;
-  border:1px dashed #ffffff33;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--muted);
-  font-size:13px;
-  background:rgba(255,255,255,.03);
-}
+    /* GALLERY */
+    .gallery-wrap{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(700px 300px at 50% 10%, rgba(13,43,91,.22), transparent 60%);
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){ .gallery{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 520px){ .gallery{grid-template-columns:1fr} }
 
-footer{
-  padding:30px 0;
-  border-top:1px solid var(--line);
-  color:var(--muted);
-  font-size:13px;
-}
-</style>
+    .ph{
+      height:170px;
+      border-radius:18px;
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(255,255,255,.03);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:14px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .ph strong{color:#fff}
+
+    /* STEPS */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width: 980px){ .steps{grid-template-columns:1fr} }
+    .step{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .num{
+      width:34px;height:34px;border-radius:12px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background: rgba(13,43,91,.22);
+      border:1px solid rgba(13,43,91,.45);
+      color:#fff;font-weight:800;
+    }
+    .step h4{margin:10px 0 6px}
+    .step p{margin:0;color:var(--muted);font-size:14px}
+
+    /* CONTACT */
+    .contact{
+      border-top:1px solid var(--line);
+      background:
+        radial-gradient(700px 300px at 50% 10%, rgba(13,43,91,.24), transparent 60%);
+    }
+    .contact-box{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;
+    }
+    @media (max-width: 980px){ .contact-box{grid-template-columns:1fr} }
+    .info{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow2);
+    }
+
+    footer{
+      padding:28px 0;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+    }
+  </style>
 </head>
 
 <body>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <span class="logo-frame logo-frame--nav">
+            <img class="logo-img logo-img--nav" src="assets/assetslogo.jpg.JPG" alt="Qushchi logo" />
+          </span>
+          <span>QUSHCHI</span>
+        </a>
 
-<div class="nav">
-  <div class="container nav-inner">
-    <div class="brand">
-      <img src="assets/assetslogo.jpg.JPG" class="brand-logo">
-      QUSHCHI
-    </div>
+        <nav class="menu">
+          <a href="#bolimlar">Bo‘limlar</a>
+          <a href="#galereya">Galereya</a>
+          <a href="#qanday">Qo‘shilish</a>
+          <a href="#aloqa">Aloqa</a>
+        </nav>
 
-    <div class="menu">
-      <a href="#bolimlar">Bo‘limlar</a>
-      <a href="#galereya">Galereya</a>
-      <a href="#aloqa">Aloqa</a>
-    </div>
-
-    <a href="https://t.me/qushchi_team" class="btn">Qo‘shilish</a>
-  </div>
-</div>
-
-<section class="hero">
-  <div class="container hero-grid">
-
-    <div>
-      <img src="assets/assetslogo.jpg.JPG" class="hero-logo">
-
-      <h1>Qushchi<br>Muhandislik Klubi</h1>
-
-      <p>
-        Biz aviatsiya va dronlar yo‘nalishida amaliy tajriba qilamiz:
-        o‘rganamiz, quramiz, sinovdan o‘tkazamiz va musobaqalarga tayyorlanamiz.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="https://t.me/qushchi_team" class="btn">Telegram orqali yozish</a>
-        <a href="#bolimlar" class="btn" style="background:transparent;border:1px solid var(--line)">Bo‘limlarni ko‘rish</a>
-      </div>
-
-      <div class="pill-row">
-        <div class="pill">Aviamodellashtirish</div>
-        <div class="pill">Drone Racing</div>
-        <div class="pill">UAV Development</div>
-        <div class="pill">Media & Kontent</div>
-      </div>
-    </div>
-
-    <div class="hero-card">
-      <h3>Biz kimlarni qabul qilamiz?</h3>
-      <p class="muted">
-        Motivatsiyali talabalar: mexanika, elektronika, dasturlash,
-        dizayn, video-montaj, tarjima — hammasi kerak.
-      </p>
-
-      <div class="stats">
-        <div class="stat"><b>3</b><span>bo‘lim</span></div>
-        <div class="stat"><b>1</b><span>jamoa</span></div>
-        <div class="stat"><b>∞</b><span>g‘oya</span></div>
-      </div>
-
-      <p class="muted" style="margin-top:15px">
-        📍 Litsey binosi • 414-xona <br>
-        🕒 Mashg‘ulotlar haftalik reja bo‘yicha
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section class="section" id="bolimlar">
-  <div class="container">
-    <h2>Bo‘limlar</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Qushchi Academy</h3>
-        <p>Aviamodellashtirish va drone racing mashg‘ulotlari.</p>
-      </div>
-
-      <div class="card">
-        <h3>Qushchi Media</h3>
-        <p>Ijtimoiy tarmoqlar, aviakontent, tarjima va marketing.</p>
-      </div>
-
-      <div class="card">
-        <h3>Qushchi Mechanics</h3>
-        <p>UAV ishlab chiqish, mexanika va pilotlar bilan rivojlantirish.</p>
+        <div class="nav-actions">
+          <a class="btn btn-solid" href="https://t.me/qushchi_team">Qo‘shilish</a>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="section" id="galereya">
-  <div class="container">
-    <h2>Galereya</h2>
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);display:inline-block"></span>
+            Talabalar muhandislik jamoasi • Aviatsiya & Dronlar
+          </div>
 
-    <div class="gallery">
-      <div>Rasm 1 (keyin qo‘shiladi)</div>
-      <div>Rasm 2 (keyin qo‘shiladi)</div>
-      <div>Rasm 3 (keyin qo‘shiladi)</div>
-      <div>Rasm 4 (keyin qo‘shiladi)</div>
+          <div class="logo-frame logo-frame--hero" aria-label="Qushchi logo katta">
+            <img class="logo-img logo-img--hero" src="assets/assetslogo.jpg.JPG" alt="Qushchi logo" />
+          </div>
+
+          <h1 class="hero-title">Qushchi<br/>Muhandislik Klubi</h1>
+
+          <div class="hero-sub">
+            Biz aviatsiya va dronlar yo‘nalishida amaliy tajriba qilamiz:
+            o‘rganamiz, quramiz, sinovdan o‘tkazamiz va musobaqalarga tayyorlanamiz.
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="https://t.me/qushchi_team">Telegram orqali yozish</a>
+            <a class="btn btn-ghost" href="#bolimlar">Bo‘limlarni ko‘rish</a>
+          </div>
+
+          <div class="pill-row">
+            <span class="pill">Aviamodellashtirish</span>
+            <span class="pill">Drone Racing</span>
+            <span class="pill">UAV Development</span>
+            <span class="pill">Media & Kontent</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Biz kimlarni qabul qilamiz?</h3>
+          <div class="muted">
+            Motivatsiyali talabalar: mexanika, elektronika, dasturlash, dizayn, video-montaj,
+            tarjima — hammasi kerak.
+          </div>
+
+          <div class="stats">
+            <div class="stat"><b>3</b><span>bo‘lim</span></div>
+            <div class="stat"><b>1</b><span>jamoa</span></div>
+            <div class="stat"><b>∞</b><span>g‘oya</span></div>
+          </div>
+
+          <div style="margin-top:14px" class="muted">
+            📍 Manzil: <span class="kbd">Litsey binosi • 414-xona</span><br/>
+            🕒 Mashg‘ulotlar: <span class="kbd">haftalik reja bo‘yicha</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer>
-  <div class="container">
-    © 2026 Qushchi Muhandislik Klubi
-  </div>
-</footer>
+  <main>
+    <section id="bolimlar">
+      <div class="container">
+        <div class="section-title">
+          <h2>Bo‘limlar</h2>
+          <p>Har kim o‘z yo‘nalishini topadi</p>
+        </div>
 
+        <div class="grid">
+          <div class="card">
+            <h3>Qushchi Academy</h3>
+            <p>Aviamodellashtirish va drone racing bo‘yicha amaliy treninglar.</p>
+          </div>
+
+          <div class="card">
+            <h3>Qushchi Media</h3>
+            <p>Klub ijtimoiy tarmoqlari, kontent, aviakontentni o‘zbek tiliga tarjima qilish.</p>
+          </div>
+
+          <div class="card">
+            <h3>Qushchi Mechanics</h3>
+            <p>UAV ustida ishlash: yig‘ish, test, mexanika va pilotlar bilan rivojlantirish.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galereya" class="gallery-wrap">
+      <div class="container">
+        <div class="section-title">
+          <h2>Galereya</h2>
+          <p>Keyin rasmlar qo‘shamiz</p>
+        </div>
+
+        <div class="gallery">
+          <div class="ph"><div><strong>Rasm 1</strong><br/>keyin qo‘shiladi</div></div>
+          <div class="ph"><div><strong>Rasm 2</strong><br/>keyin qo‘shiladi</div></div>
+          <div class="ph"><div><strong>Rasm 3</strong><br/>keyin qo‘shiladi</div></div>
+          <div class="ph"><div><strong>Rasm 4</strong><br/>keyin qo‘shiladi</div></div>
+        </div>
+
+        <div style="margin-top:14px" class="muted">
+          Keyin rasmlar: <span class="kbd">assets/gal/</span> papkaga yuklanadi.
+        </div>
+      </div>
+    </section>
+
+    <section id="qanday">
+      <div class="container">
+        <div class="section-title">
+          <h2>Qanday qo‘shilaman?</h2>
+          <p>3 ta oddiy qadam</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="num">1</span>
+            <h4>Telegramga yozing</h4>
+            <p>Ism, fakultet, qaysi bo‘lim qiziqtiradi — qisqa yozing.</p>
+          </div>
+          <div class="step">
+            <span class="num">2</span>
+            <h4>Uchrashuvga keling</h4>
+            <p>414-xonada tanishamiz, yo‘nalish tanlaysiz, vazifalar beriladi.</p>
+          </div>
+          <div class="step">
+            <span class="num">3</span>
+            <h4>Jamoada ishlang</h4>
+            <p>Trening, test va natijalar — hammasi amaliy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aloqa" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Aloqa</h2>
+          <p>Hamkorlik yoki a’zo bo‘lish uchun</p>
+        </div>
+
+        <div class="contact-box">
+          <div class="info">
+            <h3>Qushchi</h3>
+            <p class="muted">📍 Litsey binosi, 414-xona</p>
+            <p class="muted">📩 Telegram: <a class="kbd" href="https://t.me/qushchi_team">@qushchi_team</a></p>
+          </div>
+
+          <div class="info">
+            <h3>Xabar namunasi</h3>
+            <p class="muted">
+              “Assalomu alaykum! Men ___, ___ fakultet. Qushchi’ga qo‘shilmoqchiman.
+              Qiziqqan bo‘limim: Academy / Media / Mechanics. Tajribam: ___.”
+            </p>
+            <a class="btn btn-solid" href="https://t.me/qushchi_team">Hozir yozish</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © 2026 Qushchi Muhandislik Klubi • GitHub Pages
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
