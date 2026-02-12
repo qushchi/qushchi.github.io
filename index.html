@@ -1,52 +1,393 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Qushchi Engineering Club</title>
-<style>
-  body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#0b0b0b;color:#fff}
-  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-        padding:60px 18px;background:radial-gradient(800px 400px at 50% 20%, #1b1b1b 0%, #0b0b0b 70%)}
-  h1{font-size:56px;letter-spacing:4px;margin:0}
-  .tag{margin-top:14px;font-size:18px;opacity:.85}
-  .btn{margin-top:28px;background:#ffcc00;border:0;padding:14px 26px;border-radius:12px;
-       font-size:16px;cursor:pointer;transition:.2s}
-  .btn:hover{transform:translateY(-2px)}
-  .wrap{max-width:980px;margin:0 auto;padding:70px 18px}
-  h2{margin:0 0 22px 0}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
-  .card{background:#151515;border:1px solid #222;border-radius:18px;padding:22px;text-align:left}
-  .card h3{margin:0 0 10px 0}
-  .muted{opacity:.8;line-height:1.5}
-  footer{padding:28px 18px;border-top:1px solid #1b1b1b;opacity:.7;text-align:center}
-</style>
-</head>
-<body>
-  <section class="hero">
-    <h1>QUSHCHI</h1>
-    <div class="tag">TSTU STUDENTS ENGINEERING CLUB</div>
-    <button class="btn" onclick="location.href='https://t.me/qushchi_team'">Join Our Team</button>
-  </section>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qushchi — Muhandislik Klubi</title>
+  <meta name="description" content="Qushchi — aviatsiya, dronlar va muhandislik yo‘nalishida talabalardan iborat klub." />
 
-  <main class="wrap">
-    <h2>Our Departments</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Qushchi Academy</h3>
-        <div class="muted">Aeromodelling • Drone Racing • Training</div>
-      </div>
-      <div class="card">
-        <h3>Qushchi Media</h3>
-        <div class="muted">Social Media • Aviation Contents in Uzbek • Recruiting</div>
-      </div>
-      <div class="card">
-        <h3>Qushchi Mechanics</h3>
-        <div class="muted">UAV Development • Mechanics • Pilots • Testing</div>
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --card:#141414;
+      --line:#232323;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+      --accent:#ffcc00;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,11,.7);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:1px;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block}
+    .menu{display:flex; gap:18px; font-size:14px; color:var(--muted)}
+    .menu a:hover{color:#fff}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px; border-radius:14px; border:1px solid rgba(255,204,0,.35);
+      background: rgba(255,204,0,.12);
+      color:#fff; cursor:pointer; transition:.2s;
+      font-weight:600;
+    }
+    .btn:hover{transform:translateY(-1px); background: rgba(255,204,0,.18)}
+    .btn-solid{
+      background: var(--accent);
+      color:#111; border:0;
+    }
+    .btn-solid:hover{background:#ffb800}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 42px;
+      background:
+        radial-gradient(900px 420px at 50% 10%, rgba(255,204,0,.18), transparent 60%),
+        radial-gradient(700px 360px at 20% 30%, rgba(88,163,255,.12), transparent 60%),
+        radial-gradient(700px 360px at 80% 40%, rgba(255,255,255,.06), transparent 60%);
+      border-bottom:1px solid var(--line);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:center;
+    }
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+    h1{margin:0;font-size:56px;letter-spacing:2px;line-height:1.05}
+    .subtitle{margin-top:14px;color:var(--muted);font-size:16px;max-width:58ch}
+    .hero-actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+    .pill-row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .pill{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+    }
+    .hero-card{
+      background: rgba(20,20,20,.75);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+    }
+    .hero-card h3{margin:0 0 10px 0}
+    .hero-card .muted{color:var(--muted);font-size:14px}
+    .stat{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .stat div{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:12px;
+      text-align:center;
+    }
+    .stat b{display:block;font-size:18px}
+    .stat span{font-size:12px;color:var(--muted)}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:12px;
+      margin-bottom:18px;
+    }
+    .section-title h2{margin:0;font-size:26px}
+    .section-title p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr} }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding:18px;
+      transition:.2s;
+    }
+    .card:hover{transform:translateY(-3px); border-color: rgba(255,204,0,.35)}
+    .card h3{margin:0 0 8px 0}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{
+      font-size:12px;color:var(--muted);
+      border:1px solid var(--line);
+      padding:6px 10px;border-radius:999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width: 900px){ .steps{grid-template-columns:1fr} }
+    .step{
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+    }
+    .num{
+      width:34px;height:34px;border-radius:12px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background: rgba(255,204,0,.14);
+      border:1px solid rgba(255,204,0,.35);
+      color:#fff;font-weight:700;
+    }
+    .step h4{margin:10px 0 6px}
+    .step p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Contact */
+    .contact{
+      background:
+        radial-gradient(700px 300px at 50% 20%, rgba(255,204,0,.14), transparent 60%);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .contact-box{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;
+    }
+    @media (max-width: 900px){ .contact-box{grid-template-columns:1fr} }
+    .info{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+    }
+    .info p{margin:8px 0;color:var(--muted)}
+    .kbd{
+      display:inline-block;
+      padding:4px 8px;border-radius:10px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:12px;color:var(--muted)
+    }
+
+    footer{
+      padding:28px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>QUSHCHI</span>
+        </div>
+        <div class="menu">
+          <a href="#bolimlar">Bo‘limlar</a>
+          <a href="#loyihalar">Loyihalar</a>
+          <a href="#qanday">Qanday a'zo bo'laman?</a>
+          <a href="#aloqa">Aloqa</a>
+        </div>
+        <a class="btn btn-solid" href="https://t.me/qushchi_team">A'zo Bo'lish</a>
       </div>
     </div>
-  </main>
+  </div>
 
-  <footer>© 2026 Qushchi Engineering Club</footer>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <h1>Qushchi<br/>Muhandislik Klubi</h1>
+          <div class="subtitle">
+            Aviatsiya va dronlar yo‘nalishida talabalardan iborat jamoa:
+            o‘rganamiz, quramiz, sinov qilamiz va musobaqalarga tayyorlanamiz.
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="https://t.me/qushchi_team">Telegram orqali yozish</a>
+            <a class="btn" href="#bolimlar">Bo‘limlarni ko‘rish</a>
+          </div>
+
+          <div class="pill-row">
+            <span class="pill">Aviamodellashtirish</span>
+            <span class="pill">Drone Racing</span>
+            <span class="pill">UAV Development</span>
+            <span class="pill">Media & Kontent</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>Biz nimani qidiryapmiz?</h3>
+          <div class="muted">
+            Motivatsiyali talabalar: mexanika, elektronika, dizayn, video, tarjima —
+            hammasi kerak.
+          </div>
+
+          <div class="stat">
+            <div><b>3</b><span>bo‘lim</span></div>
+            <div><b>1</b><span>jamoa</span></div>
+            <div><b>∞</b><span>g‘oya</span></div>
+          </div>
+
+          <div style="margin-top:14px" class="muted">
+            📍 Manzil: <span class="kbd"> TSTU Litsey binosi • 414-xona</span><br/>
+            ⏱️ Mashg‘ulotlar: <span class="kbd">haftalik reja bo‘yicha</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="bolimlar">
+      <div class="container">
+        <div class="section-title">
+          <h2>Bo‘limlar</h2>
+          <p>Har kim o‘z yo‘nalishini topadi</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Qushchi Academy</h3>
+            <p>Aviamodellashtirish va drone racing.</p>
+            <div class="tags">
+              <span class="tag">Kurslar</span>
+              <span class="tag">Amaliyot</span>
+              <span class="tag">Parvoz</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Qushchi Media</h3>
+            <p>Klubning ijtimoiy tarmoqlari, Avia kontent tarjimalari va Uzbekcha aviakontent.</p>
+            <div class="tags">
+              <span class="tag">Instagram/Telegram</span>
+              <span class="tag">Video montaj</span>
+              <span class="tag">Tarjima</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Qushchi Mechanics</h3>
+            <p>UAV loyihalash, yig‘ish, sinov va texnik rivojlantirish. Mexaniklar, pilotlar, modellistlar.</p>
+            <div class="tags">
+              <span class="tag">UAV</span>
+              <span class="tag">Mexanika</span>
+              <span class="tag">Sinov</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loyihalar">
+      <div class="container">
+        <div class="section-title">
+          <h2>Loyihalar</h2>
+          <p>Namuna (keyin rasmlar/video qo‘shamiz)</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>FPV Drone</h3>
+            <p>Yig‘ish, sozlash, trening va poygaga tayyorlash.</p>
+          </div>
+          <div class="card">
+            <h3>Flying Wing</h3>
+            <p>INAV/Betaflight sozlamalari, stabilizatsiya va parvoz sinovlari.</p>
+          </div>
+          <div class="card">
+            <h3>Kontent & Darslar</h3>
+            <p>Aviatsiya mavzularida video darslar va o‘zbekcha tarjimalar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="qanday">
+      <div class="container">
+        <div class="section-title">
+          <h2>Qanday qo‘shilaman?</h2>
+          <p>3 ta oddiy qadam</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="num">1</span>
+            <h4>Telegramga yozing</h4>
+            <p>Ismingiz, fakultetingiz, qaysi bo‘lim qiziqtirishi — qisqa yozing.</p>
+          </div>
+          <div class="step">
+            <span class="num">2</span>
+            <h4>Uchrashuvga keling</h4>
+            <p>414-xonada tanishamiz, yo‘nalish tanlaysiz, vazifalar beriladi.</p>
+          </div>
+          <div class="step">
+            <span class="num">3</span>
+            <h4>Jamoaga kirib ishlang</h4>
+            <p>Trening, loyiha, sinov va natijalar — hammasi amaliy.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="aloqa" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Aloqa</h2>
+          <p>Hamkorlik yoki a’zo bo‘lish uchun</p>
+        </div>
+
+        <div class="contact-box">
+          <div class="info">
+            <h3>Qushchi</h3>
+            <p>📍 Litsey binosi, 414-xona</p>
+            <p>📩 Telegram: <a class="kbd" href="https://t.me/qushchi_team">@qushchi_team</a></p>
+            <p>🧩 Hamkorlik / sponsorlik: Telegram orqali murojaat qiling</p>
+          </div>
+
+          <div class="info">
+            <h3>Qisqa xabar namunasi</h3>
+            <p class="muted">
+              “Assalomu alaykum! Men ___, ___ fakultet. Qushchi’ga qo‘shilmoqchiman.
+              Qiziqqan bo‘limim: Academy / Media / Mechanics. Tajribam: ___.”
+            </p>
+            <a class="btn btn-solid" href="https://t.me/qushchi_team">Hozir yozish</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © 2026 Qushchi Muhandislik Klubi • Powered by GitHub Pages
+      </div>
+    </footer>
+  </main>
 </body>
 </html>
