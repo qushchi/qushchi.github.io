@@ -231,7 +231,63 @@ a{text-decoration:none;color:inherit}
   transform:scale(1.03);
   box-shadow:0 20px 50px rgba(13,43,91,.45);
 }
+/* OTHER PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
 
+@media(max-width:900px){
+  .projects{grid-template-columns:repeat(2,1fr)}
+}
+
+.project-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:10px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  min-height:170px;
+  transition:.25s;
+}
+
+.project-card:hover{
+  transform:scale(1.02);
+  border-color:#ffffff44;
+}
+
+.project-card h3{
+  margin:0;
+  font-size:16px;
+}
+
+.project-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.4;
+}
+
+.project-tag{
+  display:inline-flex;
+  width:fit-content;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* Ko'proq card (re-use style like gallery) */
+.projects .more-card{
+  height:170px;
+  border-radius:18px;
+}
 footer{
   padding:30px 0;
   border-top:1px solid var(--line);
@@ -253,6 +309,7 @@ footer{
     <div class="menu">
       <a href="#bolimlar">Bo‘limlar</a>
       <a href="#galereya">Galereya</a>
+      <a href="#loyihalar">Loyihalar</a>
       <a href="#aloqa">Aloqa</a>
     </div>
 
@@ -352,6 +409,45 @@ Qo'shilish
 </div>
   </div>
 </section>
+  <section class="section" id="loyihalar">
+  <div class="container">
+    <h2>Klub a’zolarining boshqa loyihalari</h2>
+
+    <div class="projects">
+      <a class="project-card" href="https://youtube.com/@aviabilim?si=qPon0vyHkARDFhFR" target="_blank">
+        <div>
+          <span class="project-tag">YouTube</span>
+          <h3>O‘zbek tilidagi avia darsliklar</h3>
+          <p>Aviatsiya bo‘yicha bepul darslar, videolar va amaliy tushuntirishlar.</p>
+        </div>
+        <div class="project-tag">Ko‘rish →</div>
+      </a>
+
+      <a class="project-card" href="https://www.instagram.com/aviabilim?igsh=MW5ucXpvaG92NjU1aA==" target="_blank">
+        <div>
+          <span class="project-tag">Instagram</span>
+          <h3>CyberScience aviamodellashtirish to‘garagi</h3>
+          <p>Aviamodellashtirish faoliyati, jarayonlar va treninglardan lavhalar.</p>
+        </div>
+        <div class="project-tag">Kirish →</div>
+      </a>
+
+      <a class="project-card" href="https://t.me/Aviabilim" target="_blank">
+        <div>
+          <span class="project-tag">Telegram</span>
+          <h3>Avia Bilim</h3>
+          <p>Yangiliklar, darslar, materiallar va avia kontentlar.</p>
+        </div>
+        <div class="project-tag">Obuna bo‘lish →</div>
+      </a>
+
+      <a href="https://t.me/qushchi_team" target="_blank" class="more-card">
+        <span>Ko‘proq →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="container">
     © 2026 Qushchi Muhandislik Klubi
