@@ -362,7 +362,7 @@ footer{
 .social-text b{display:block;font-size:14px}
 .social-text span{display:block;font-size:12px;color:var(--muted)}
 
-  /* SPONSORLAR */
+ /* SPONSORLAR */
 .sponsors{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -376,16 +376,14 @@ footer{
   }
 }
 
-.sponsor-card img{
-  max-width:160px;
-  height:80px;
-  object-fit:contain;
-  margin-bottom:20px;
-  background:white;
-  padding:10px;
-  border-radius:12px;
+.sponsor-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+  transition:.3s;
 }
-
 
 .sponsor-card:hover{
   transform:translateY(-6px);
@@ -406,16 +404,12 @@ footer{
 
 /* Maxsus Homiy kartasi */
 .special-sponsor{
-  background:linear-gradient(145deg,#0E2F66,#081C3A);
-  border:1px solid #2f5ca8;
+  background:linear-gradient(145deg,#0D2B5B,#08172E);
+  border:1px solid #1f3c6a;
 }
 
 .special-sponsor:hover{
   border-color:#3c6db3;
-}
-.sponsor-card:hover img{
-  transform:scale(1.05);
-  transition:0.3s;
 }
 
 </style>
