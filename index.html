@@ -362,6 +362,56 @@ footer{
 .social-text b{display:block;font-size:14px}
 .social-text span{display:block;font-size:12px;color:var(--muted)}
 
+  /* SPONSORLAR */
+.sponsors{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+  margin-top:30px;
+}
+
+@media(max-width:900px){
+  .sponsors{
+    grid-template-columns:1fr;
+  }
+}
+
+.sponsor-card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+  transition:.3s;
+}
+
+.sponsor-card:hover{
+  transform:translateY(-6px);
+  border-color:#ffffff33;
+}
+
+.sponsor-card img{
+  max-width:140px;
+  height:auto;
+  object-fit:contain;
+  margin-bottom:15px;
+}
+
+.sponsor-card h3{
+  margin:0;
+  font-size:16px;
+}
+
+/* Maxsus Homiy kartasi */
+.special-sponsor{
+  background:linear-gradient(145deg,#0D2B5B,#08172E);
+  border:1px solid #1f3c6a;
+}
+
+.special-sponsor:hover{
+  border-color:#3c6db3;
+}
+
 </style>
 </head>
 
@@ -567,6 +617,45 @@ Qo'shilish
       </div>
     </div>
 
+  </div>
+</section>
+<!-- ================= SPONSORLAR ================= -->
+<section class="section" id="sponsors">
+  <div class="container">
+    <h2>Hamkorlar va Homiylar</h2>
+
+    <div class="sponsors">
+
+      <!-- 1) TSTU -->
+      <div class="sponsor-card">
+        <img src="assets/assets/tstu.png" alt="Toshkent Davlat Transport Universiteti">
+        <h3>Toshkent Davlat Transport Universiteti</h3>
+      </div>
+
+      <!-- 2) CyberPark -->
+      <div class="sponsor-card">
+        <img src="assets/assets/cyberpark.jpg" alt="CyberPark">
+        <h3>CyberPark</h3>
+      </div>
+
+      <!-- 3) Homiy bo‘lish -->
+      <div class="sponsor-card special-sponsor">
+        <h3>Homiy bo‘lish / Hamkorlik</h3>
+
+        <p style="margin-top:10px;color:var(--muted);font-size:14px;">
+          Klubimiz bilan hamkorlik qilmoqchimisiz yoki homiy bo‘lishni istaysizmi?
+          Biz bilan to‘g‘ridan-to‘g‘ri bog‘laning.
+        </p>
+
+        <a href="https://t.me/uralfahriddeen" 
+           target="_blank" 
+           class="btn" 
+           style="margin-top:15px;display:inline-block;">
+           Telegram orqali bog‘lanish
+        </a>
+      </div>
+
+    </div>
   </div>
 </section>
 
